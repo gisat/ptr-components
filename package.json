@@ -1,0 +1,48 @@
+{
+  "name": "@gisatcz/ptr-components",
+  "version": "1.0.0-alpha",
+  "description": "Panther FE components",
+  "keywords": [
+    "panther",
+    "gisat"
+  ],
+  "homepage": "https://github.com/gisat/ptr-components",
+  "main": "src/index.js",
+  "module": "dist/index.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gisat/ptr-components"
+  },
+  "dependencies": {
+    "@gisatcz/ptr-core": "1.0.0-alpha",
+    "@gisatcz/ptr-utils": "1.0.5",
+    "@gisatcz/ptr-atoms": "1.0.0-alpha",
+    "@gisatcz/ptr-locales": "0.0.1-pre-alpha",
+    "classnames": "2.2.6",
+    "prop-types": "15.7.2",
+    "lodash": "4.17.15",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-rnd": "9.2.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.8.4",
+    "@babel/preset-react": "7.8.3",
+    "@babel/core": "7.8.4",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "babel-loader": "8.0.6",
+    "css-loader": "3.4.2",
+    "style-loader": "1.1.3",
+    "sass-loader": "8.0.2",
+    "source-map-loader": "0.2.4",
+    "svg-inline-loader": "0.8.2",
+    "node-sass": "4.13.1",
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.11"
+  },
+  "scripts": {
+    "build": "webpack --mode=production --devtool=source-map",
+    "start": "webpack --watch --mode=development --devtool=eval-source-map"
+  }
+}
