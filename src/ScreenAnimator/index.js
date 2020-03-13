@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ScreenAnimator.css';
+import './ScreenAnimator.scss';
 
 class ScreenAnimator extends React.PureComponent {
 	constructor(props){

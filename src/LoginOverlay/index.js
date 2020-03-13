@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './style.css';
+import './style.scss';
 
 import {Button, Input} from '@gisatcz/ptr-atoms';
 import {withNamespaces} from '@gisatcz/ptr-locales';
