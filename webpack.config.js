@@ -2,19 +2,20 @@ var path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'sass'),
         filename: 'index.js',
         sourceMapFilename: "index.js.map",
         libraryTarget: 'umd'
     },
     module: {
         rules: [
+            // {
+            //     test: /\.js$/,
+            //     include: path.resolve(__dirname, 'src'),
+            //     exclude: /(node_modules|bower_components)/,
+            //     use: ['babel-loader', 'source-map-loader']
+            // }, 
             {
-                test: /\.js$/,
-                include: path.resolve(__dirname, 'src'),
-                exclude: /(node_modules|bower_components)/,
-                use: ['babel-loader', 'source-map-loader']
-            }, {
                 test: /\.s[ac]ss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
