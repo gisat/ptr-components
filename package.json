@@ -1,17 +1,19 @@
 {
   "name": "@gisatcz/ptr-components",
-  "version": "1.1.1-pre-alpha",
+  "version": "1.1.2-pre-alpha",
   "description": "Panther FE components",
   "keywords": [
     "panther",
     "gisat"
   ],
   "homepage": "https://github.com/gisat/ptr-components",
+  "style": "dist/index.css",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "src"
   ],
   "license": "Apache-2.0",
   "repository": {
@@ -41,7 +43,9 @@
     "babel-loader": "8.0.6",
     "babel-plugin-lodash": "^3.3.4",
     "builtin-modules": "^3.1.0",
+    "cross-env": "^7.0.2",
     "css-loader": "3.4.2",
+    "glob": "^7.1.6",
     "node-sass": "4.13.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.27",
@@ -61,12 +65,12 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "run-s clean && run-p start:es start:cjs start:lib:es",
-    "start:lib:es": "BABEL_ENV=es babel --watch src -d lib --verbose",
-    "start:cjs": "NODE_ENV=cjs rollup -c -w",
-    "start:es": "NODE_ENV=es rollup -c -w",
+    "start:lib:es": "cross-env BABEL_ENV=es babel --watch src -d lib --verbose",
+    "start:cjs": "cross-env NODE_ENV=cjs rollup -c -w",
+    "start:es": "cross-env NODE_ENV=es rollup -c -w",
     "build": "run-s clean && run-p build:es build:cjs build:lib:es",
-    "build:es": "NODE_ENV=es rollup -c",
-    "build:cjs": "NODE_ENV=cjs rollup -c",
-    "build:lib:es": "BABEL_ENV=es babel src -d lib"
+    "build:es": "cross-env NODE_ENV=es rollup -c",
+    "build:cjs": "cross-env NODE_ENV=cjs rollup -c",
+    "build:lib:es": "cross-env BABEL_ENV=es babel src -d lib"
   }
 }
