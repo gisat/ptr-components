@@ -2,9 +2,24 @@ import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
 import sass from 'rollup-plugin-sass';
+import postcss from 'rollup-plugin-postcss';
+import postcssUrl from './build/plugins/postcssUrl'
 
 const env = process.env.NODE_ENV;
 const pkg = require("./package.json");
+
+process.env.NODE_ENV = 'development'
+
+const CWD = process.cwd()
+const Paths = {
+  SRC: `${CWD}/src`,
+  DIST: `${CWD}/dist`,
+  NODE_MODULES: `${CWD}/node_modules`
+}
+Object.assign(Paths, {
+  INPUT: Paths.SRC + '/index.js',
+  OUTPUT: Paths.DIST + '/index.js'
+})
 
 const lodashExternal = [
   'lodash/find',
@@ -41,8 +56,36 @@ export default {
     commonjs({
         include: 'node_modules/**',
     }),
-    sass({
-      output: true,
+    postcss({
+      // modules: true,
+      extract: 'dist/style.css',
+      // to: 'dist',
+      // from: 'src',
+      // use: {
+      //   sass: {
+      //     to: 'dist',
+      //     from: 'src',
+      //   }
+      // },
+      // loaders:[
+      //   {
+      //     loader: 'css-loader',
+      //     test: /\.[sc]ss$/,
+      //     async process ({ code }) {},
+      //   },
+      //   {
+      //     loader: 'sass-loader',
+      //     test: /\.[sc]ss$/,
+      //     async process ({ code }) {},
+      //   }
+      // ],
+      plugins: [
+        ...postcssUrl({
+          basePath: [Paths.SRC, Paths.NODE_MODULES],
+          assetsPath: Paths.DIST + '/assets',
+          dest: Paths.DIST
+        })
+      ]
     }),
     filesize(),
   ]
