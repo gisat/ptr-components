@@ -7,7 +7,7 @@ import postcssUrl from './build/plugins/postcssUrl'
 const env = process.env.NODE_ENV;
 const pkg = require("./package.json");
 
-process.env.NODE_ENV = 'development'
+// process.env.NODE_ENV = 'development'
 
 const CWD = process.cwd()
 const Paths = {
