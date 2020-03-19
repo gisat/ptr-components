@@ -12,8 +12,7 @@
   "module": "dist/index.es.js",
   "files": [
     "dist",
-    "lib",
-    "src"
+    "lib"
   ],
   "license": "Apache-2.0",
   "repository": {
