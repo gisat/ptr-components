@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Window from "./components/Window";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Window from './components/Window';
 
 import './style.scss';
 
 class WindowsContainer extends React.PureComponent {
-
 	static propTypes = {
 		onWindowClick: PropTypes.func,
 		onWindowClose: PropTypes.func,
@@ -13,17 +12,17 @@ class WindowsContainer extends React.PureComponent {
 		onWindowDragStop: PropTypes.func,
 		onWindowResize: PropTypes.func,
 		set: PropTypes.shape({
-			orderByHistory: PropTypes.array
+			orderByHistory: PropTypes.array,
 		}),
-		windows: PropTypes.object
+		windows: PropTypes.object,
 	};
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
 			width: null,
-			height: null
+			height: null,
 		};
 
 		this.onWindowClick = this.props.onWindowClick.bind(this);
@@ -51,7 +50,11 @@ class WindowsContainer extends React.PureComponent {
 		let pxHeight = null;
 
 		// get available width and height
-		if (this.el && typeof this.el.clientWidth !== 'undefined' && typeof this.el.clientHeight !== 'undefined') {
+		if (
+			this.el &&
+			typeof this.el.clientWidth !== 'undefined' &&
+			typeof this.el.clientHeight !== 'undefined'
+		) {
 			pxHeight = this.el.clientHeight;
 			pxWidth = this.el.clientWidth;
 		}
@@ -104,10 +107,23 @@ class WindowsContainer extends React.PureComponent {
 			return order.map((windowKey, index) => {
 				let window = this.props.windows[windowKey];
 
-				if (window.data.component && typeof window.data.component === "function") {
-					return this.renderWindow(window.key, index, window.data.settings, React.createElement(window.data.component, {...window.data.props}));
+				if (
+					window.data.component &&
+					typeof window.data.component === 'function'
+				) {
+					return this.renderWindow(
+						window.key,
+						index,
+						window.data.settings,
+						React.createElement(window.data.component, {...window.data.props})
+					);
 				} else {
-					return this.renderWindow(window.key, index, window.data.settings, React.cloneElement(window.data.component));
+					return this.renderWindow(
+						window.key,
+						index,
+						window.data.settings,
+						React.cloneElement(window.data.component)
+					);
 				}
 			});
 		} else {

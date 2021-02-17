@@ -16,10 +16,11 @@
 	align-items: center;
 }
 
-.ptr-user-name, .ptr-user-login {
+.ptr-user-name,
+.ptr-user-login {
 	display: flex;
 	height: m(4/3);
-	padding: .25rem;
+	padding: 0.25rem;
 	font-size: $a1;
 	white-space: nowrap;
 	overflow: hidden;
@@ -38,4 +39,3 @@
 .ptr-user-login > a {
 	cursor: pointer;
 }
-

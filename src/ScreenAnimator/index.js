@@ -3,55 +3,63 @@ import React from 'react';
 import './ScreenAnimator.scss';
 
 class ScreenAnimator extends React.PureComponent {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			activeScreen: props.activeScreenKey || null,
-			screenCount: React.Children.count(props.children)
+			screenCount: React.Children.count(props.children),
 		};
 		this.switchScreen = this.switchScreen.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps){
-		if (this.state.activeScreen !== nextProps.activeScreenKey){
+	componentWillReceiveProps(nextProps) {
+		if (this.state.activeScreen !== nextProps.activeScreenKey) {
 			this.setState({
-				activeScreen: nextProps.activeScreenKey
+				activeScreen: nextProps.activeScreenKey,
 			});
 		}
 	}
 
-	switchScreen(key){
+	switchScreen(key) {
 		this.setState({
-			activeScreen: key
-		})
+			activeScreen: key,
+		});
 	}
 
 	render() {
 		let activeScreenIndex = 0;
 		let children = React.Children.map(this.props.children, (child, index) => {
-			if (child.props.screenKey === this.state.activeScreen){
+			if (child.props.screenKey === this.state.activeScreen) {
 				activeScreenIndex = index;
 			}
-			return (<div style={{
-				width: 100/this.state.screenCount + '%'
-			}}>{React.cloneElement(
-				child,
-				{...child.props, switchScreen: this.switchScreen}
-			)}</div>);
+			return (
+				<div
+					style={{
+						width: 100 / this.state.screenCount + '%',
+					}}
+				>
+					{React.cloneElement(child, {
+						...child.props,
+						switchScreen: this.switchScreen,
+					})}
+				</div>
+			);
 		});
 
 		return (
 			<div className="ptr-screen-viewport">
-				<div className="ptr-screen-container" style={{
-					width: 100 * this.state.screenCount + '%',
-					left: -100 * activeScreenIndex + '%'
-					}}>
+				<div
+					className="ptr-screen-container"
+					style={{
+						width: 100 * this.state.screenCount + '%',
+						left: -100 * activeScreenIndex + '%',
+					}}
+				>
 					{children}
 				</div>
 			</div>
 		);
 	}
-
 }
 
 export default ScreenAnimator;

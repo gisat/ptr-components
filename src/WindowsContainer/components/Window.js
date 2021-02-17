@@ -1,26 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Rnd } from 'react-rnd';
+import {Rnd} from 'react-rnd';
 import _ from 'lodash';
 
-import {Icon} from '@gisatcz/ptr-atoms'
+import {Icon} from '@gisatcz/ptr-atoms';
 
 // TODO handle sizes in rem
 const MIN_WIDTH = 100;
 const MIN_HEIGHT = 100;
-const MAX_WIDTH = "auto";
-const MAX_HEIGHT = "auto";
+const MAX_WIDTH = 'auto';
+const MAX_HEIGHT = 'auto';
 
 class Window extends React.PureComponent {
-
 	static propTypes = {
 		containerHeight: PropTypes.number,
 		containerWidth: PropTypes.number,
-		content: PropTypes.oneOfType([
-			PropTypes.element,
-			PropTypes.array
-		]),
+		content: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
 		icon: PropTypes.string,
 		onDragStart: PropTypes.func,
 		onDragStop: PropTypes.func,
@@ -30,10 +26,10 @@ class Window extends React.PureComponent {
 		title: PropTypes.string,
 		windowKey: PropTypes.string,
 		withoutHeader: PropTypes.bool,
-		zIndex: PropTypes.number
+		zIndex: PropTypes.number,
 	};
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 
 		this.onDragStart = this.onDragStart.bind(this);
@@ -63,35 +59,51 @@ class Window extends React.PureComponent {
 	}
 
 	onDragStop(e, data) {
-		let position = this.calculatePositionFromXY(data.x, data.y, this.props.width, this.props.height);
+		let position = this.calculatePositionFromXY(
+			data.x,
+			data.y,
+			this.props.width,
+			this.props.height
+		);
 
 		// TODO find better way
-		let isTargetCloseButton = e.target.className && e.target.className === "ptr-window-control close";
-		let isParentCloseButton = _.find(e.path, (element) => {return element.className === "ptr-window-control close"});
+		let isTargetCloseButton =
+			e.target.className && e.target.className === 'ptr-window-control close';
+		let isParentCloseButton = _.find(e.path, element => {
+			return element.className === 'ptr-window-control close';
+		});
 
 		if (isTargetCloseButton || isParentCloseButton) {
 			this.onClose(e);
-		}
-
-		else if (this.props.onDragStop) {
+		} else if (this.props.onDragStop) {
 			this.props.onDragStop(this.props.windowKey, position);
 		}
 	}
 
 	onResize(e, direction, ref, delta, coord) {
 		if (this.props.onResize) {
-			let position = this.calculatePositionFromXY(coord.x, coord.y, ref.offsetWidth, ref.offsetHeight);
+			let position = this.calculatePositionFromXY(
+				coord.x,
+				coord.y,
+				ref.offsetWidth,
+				ref.offsetHeight
+			);
 			// console.log(position, ref.offsetWidth, ref.offsetHeight , direction, delta);
-			this.props.onResize(this.props.windowKey, ref.offsetWidth, ref.offsetHeight, position); // TODO check
+			this.props.onResize(
+				this.props.windowKey,
+				ref.offsetWidth,
+				ref.offsetHeight,
+				position
+			); // TODO check
 		}
 	}
 
 	render() {
 		const props = this.props;
-		const handleClass = "ptr-window-handle";
+		const handleClass = 'ptr-window-handle';
 
-		let classes = classNames("ptr-window", {
-			[handleClass]: !!this.props.withoutHeader
+		let classes = classNames('ptr-window', {
+			[handleClass]: !!this.props.withoutHeader,
 		});
 
 		let width = this.props.width ? this.props.width : 'auto';
@@ -122,23 +134,25 @@ class Window extends React.PureComponent {
 				onResize={this.onResize}
 				position={{
 					x: position.x,
-					y: position.y
+					y: position.y,
 				}}
 				size={{width, height}}
 			>
-				{this.props.withoutHeader ? this.renderControls(true) : this.renderHeader(handleClass)}
+				{this.props.withoutHeader
+					? this.renderControls(true)
+					: this.renderHeader(handleClass)}
 				{this.renderContent()}
 			</Rnd>
 		);
 	}
 
 	renderHeader(handleClass) {
-		let headerClasses = "ptr-window-header " + handleClass;
+		let headerClasses = 'ptr-window-header ' + handleClass;
 
 		return (
 			<div className={headerClasses}>
 				<div className="ptr-window-title" title={this.props.title}>
-					{this.props.icon ? <Icon icon={this.props.icon}/> : null}
+					{this.props.icon ? <Icon icon={this.props.icon} /> : null}
 					{this.props.title}
 				</div>
 				{this.renderControls()}
@@ -147,25 +161,21 @@ class Window extends React.PureComponent {
 	}
 
 	renderControls(fixed) {
-		let classes = classNames("ptr-window-controls", {
-			fixed: fixed
+		let classes = classNames('ptr-window-controls', {
+			fixed: fixed,
 		});
 
 		return (
 			<div className={classes}>
 				<div className="ptr-window-control close" onClick={this.onClose}>
-					<Icon icon="close"/>
+					<Icon icon="close" />
 				</div>
 			</div>
 		);
 	}
 
 	renderContent() {
-		return (
-			<div className="ptr-window-content">
-				{this.props.content}
-			</div>
-		);
+		return <div className="ptr-window-content">{this.props.content}</div>;
 	}
 
 	calculateXYfromPosition(width, height) {
@@ -181,13 +191,13 @@ class Window extends React.PureComponent {
 		let y = 0;
 
 		if (top || top === 0) {
-			if ((top + height) < containerHeight) {
+			if (top + height < containerHeight) {
 				y = top;
 			} else {
 				y = containerHeight - height;
 			}
 		} else {
-			if ((bottom + height) < containerHeight) {
+			if (bottom + height < containerHeight) {
 				y = containerHeight - (bottom + height);
 			} else {
 				y = 0;
@@ -195,13 +205,13 @@ class Window extends React.PureComponent {
 		}
 
 		if (left || left === 0) {
-			if ((left + width) < containerWidth) {
+			if (left + width < containerWidth) {
 				x = left;
 			} else {
 				x = containerWidth - width;
 			}
 		} else {
-			if ((right + width) < containerWidth) {
+			if (right + width < containerWidth) {
 				x = containerWidth - (right + width);
 			} else {
 				x = 0;

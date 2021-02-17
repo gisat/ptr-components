@@ -8,13 +8,12 @@ import {Button, Input} from '@gisatcz/ptr-atoms';
 import {withNamespaces} from '@gisatcz/ptr-locales';
 
 class LoginOverlay extends React.PureComponent {
-
 	static propTypes = {
 		onClose: PropTypes.func,
 		onLogin: PropTypes.func,
 		open: PropTypes.bool,
 		opening: PropTypes.bool,
-		loginRequired: PropTypes.bool
+		loginRequired: PropTypes.bool,
 	};
 
 	constructor(props) {
@@ -23,7 +22,7 @@ class LoginOverlay extends React.PureComponent {
 		this.state = {
 			email: '',
 			password: '',
-			open: false
+			open: false,
 		};
 
 		this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -37,23 +36,23 @@ class LoginOverlay extends React.PureComponent {
 			let self = this;
 			setTimeout(() => {
 				self.setState({open: true});
-			},10);
+			}, 10);
 		}
 	}
 
-	onChangeEmail(value){
+	onChangeEmail(value) {
 		this.setState({
-			email: value
+			email: value,
 		});
 	}
 
 	onChangePassword(value) {
 		this.setState({
-			password: value
+			password: value,
 		});
 	}
 
-	login(){
+	login() {
 		this.props.onLogin(this.state.email, this.state.password);
 		this.closeOverlay();
 	}
@@ -64,7 +63,7 @@ class LoginOverlay extends React.PureComponent {
 
 	closeOverlay() {
 		this.setState({
-			open: false
+			open: false,
 		});
 
 		if (this.props.onClose) {
@@ -79,7 +78,11 @@ class LoginOverlay extends React.PureComponent {
 		const t = this.props.t;
 
 		return (
-			<div className={classNames("ptr-login-overlay", {open: this.state.open || this.props.open})}>
+			<div
+				className={classNames('ptr-login-overlay', {
+					open: this.state.open || this.props.open,
+				})}
+			>
 				<div className="ptr-login">
 					<div>
 						<Input
@@ -102,18 +105,11 @@ class LoginOverlay extends React.PureComponent {
 						/>
 					</div>
 					<div>
-						<Button
-							primary
-							onClick={this.login}
-						>
-							{t("user.login")}
+						<Button primary onClick={this.login}>
+							{t('user.login')}
 						</Button>
 						{!this.props.loginRequired ? (
-							<Button
-								invisible
-								inverted
-								onClick={this.cancel}
-							>
+							<Button invisible inverted onClick={this.cancel}>
 								{t('cancelCapitalized')}
 							</Button>
 						) : null}
@@ -121,7 +117,6 @@ class LoginOverlay extends React.PureComponent {
 				</div>
 			</div>
 		);
-
 	}
 }
 
