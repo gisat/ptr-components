@@ -1,13 +1,10 @@
 import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
-import postcss from 'rollup-plugin-postcss';
-import postcssUrl from './build/plugins/postcssUrl'
+import path from 'path';
 
 const env = process.env.NODE_ENV;
 const pkg = require("./package.json");
-
-// process.env.NODE_ENV = 'development'
 
 const CWD = process.cwd()
 const Paths = {
@@ -55,17 +52,9 @@ export default {
     commonjs({
         include: 'node_modules/**',
     }),
-    postcss({
-      // modules: true,
-      extract: 'dist/style.css',
-      plugins: [
-        ...postcssUrl({
-          basePath: [Paths.SRC, Paths.NODE_MODULES],
-          assetsPath: Paths.DIST + '/assets',
-          dest: Paths.DIST
-        })
-      ]
-    }),
+	postcss({
+	  extract: path.resolve(Paths.DIST + '/style.css'),
+	}),
     filesize(),
   ]
 };
