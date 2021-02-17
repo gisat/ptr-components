@@ -1,6 +1,6 @@
 .ptr-login-overlay {
 	position: absolute;
-	background: rgba(30,30,30,.95);
+	background: rgba(30, 30, 30, 0.95);
 	color: #ccc;
 	display: flex;
 	justify-content: center;
@@ -10,8 +10,7 @@
 	width: 100%;
 	opacity: 0;
 	pointer-events: none;
-	transition:
-			opacity .3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
 }
 
 .ptr-login-overlay.open {
@@ -21,12 +20,12 @@
 
 .ptr-login {
 	width: 20rem;
-	flex-grow:0;
+	flex-grow: 0;
 }
 .ptr-login > div {
-	margin-bottom: .75rem;
+	margin-bottom: 0.75rem;
 }
 
 .ptr-login .ptr-button {
-	margin-right: .5rem;
+	margin-right: 0.5rem;
 }

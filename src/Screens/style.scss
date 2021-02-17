@@ -8,15 +8,15 @@
 .ptr-screen {
 	position: relative;
 	background: $bo0;
-	transition: width .5s ease-in-out;
-	box-shadow: -5px 0 15px -5px rgba(0, 0, 0, .6);
-  	overflow-x: hidden;
+	transition: width 0.5s ease-in-out;
+	box-shadow: -5px 0 15px -5px rgba(0, 0, 0, 0.6);
+	overflow-x: hidden;
 }
 .ptr-screen.base {
 	flex-grow: 1;
 }
 .ptr-screen.focused {
-    outline: none;
+	outline: none;
 }
 .ptr-screen p {
 	position: absolute;
@@ -26,28 +26,28 @@
 /* Overlay */
 .ptr-screen-overlay {
 	@include positionFill;
-  background: transparent;
-  pointer-events: none;
-  transition: background .2s ease-in-out, box-shadow .2s ease-in-out .3s;
+	background: transparent;
+	pointer-events: none;
+	transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out 0.3s;
 }
 .ptr-screen.focused .ptr-screen-overlay {
-  outline: none;
-  box-shadow: inset 0 m(1/2) 0 m(-1/6) rgba(var(--accent6rgb), .6);
+	outline: none;
+	box-shadow: inset 0 m(1/2) 0 m(-1/6) rgba(var(--accent6rgb), 0.6);
 }
 
 .ptr-screen.disabled > .ptr-screen-overlay {
-  background: rgba($bo5, .5);
-  pointer-events: all;
-  cursor: pointer;
+	background: rgba($bo5, 0.5);
+	pointer-events: all;
+	cursor: pointer;
 }
 
 .ptr-screen.disabled > .ptr-screen-overlay:hover {
-  background: rgba($bo4, .5);
+	background: rgba($bo4, 0.5);
 }
 
 // experimental - todo test performance (compatibility should be ok now)
 .ptr-screen.disabled > .ptr-screen-scroll {
-  filter: blur(1px);
+	filter: blur(1px);
 }
 
 /* Controls */
@@ -55,10 +55,10 @@
 	position: absolute;
 	cursor: pointer;
 }
-.ptr-screen-controls.top{
+.ptr-screen-controls.top {
 	top: 1rem;
 }
-.ptr-screen-controls.middle{
+.ptr-screen-controls.middle {
 	top: 50%;
 }
 
@@ -69,14 +69,14 @@
 
 .ptr-screen-controls > .ptr-button.ghost {
 	border-color: var(--base2);
-	transition: border-color .3s ease-in-out, color .3s ease-in-out;
+	transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .ptr-screen.disabled .ptr-screen-controls > .ptr-button {
 	color: var(--base6);
 }
 
-.ptr-screen.disabled  .ptr-screen-controls > .ptr-button.ghost {
+.ptr-screen.disabled .ptr-screen-controls > .ptr-button.ghost {
 	border-color: var(--base4);
 }
 
@@ -86,7 +86,7 @@
 }
 
 .ptr-screen-controls > .ptr-button.ghost:hover,
-.ptr-screen.disabled  .ptr-screen-controls > .ptr-button.ghost:hover {
+.ptr-screen.disabled .ptr-screen-controls > .ptr-button.ghost:hover {
 	background: none;
 	border-color: var(--base5);
 }
@@ -96,44 +96,46 @@
 	overflow-x: hidden;
 	width: 100%;
 	height: 100%;
-  	outline: none;
+	outline: none;
 }
 .ptr-screen-scroll > div {
-  height: 100%;
+	height: 100%;
 }
 .ptr-screen-content {
-  padding: 0 m(4/3);
+	padding: 0 m(4/3);
 }
 
 .ptr-screen-scroll::-webkit-scrollbar {
-  width: .9375rem;
+	width: 0.9375rem;
 }
 .ptr-screen-scroll::-webkit-scrollbar-button {
-  height: .9375rem;
-  background: rgba(0,0,0,.17);
+	height: 0.9375rem;
+	background: rgba(0, 0, 0, 0.17);
 }
 .ptr-screen-scroll::-webkit-scrollbar-button:vertical:decrement {
-  /* up */
-  background-image: url(./i/triangle-up.svg);
-  background-size: contain;
+	/* up */
+	background-image: url(./i/triangle-up.svg);
+	background-size: contain;
 }
 .ptr-screen-scroll::-webkit-scrollbar-button:vertical:increment {
-  /* down */
-  background-image: url(./i/triangle-down.svg);
-  background-size: contain;
+	/* down */
+	background-image: url(./i/triangle-down.svg);
+	background-size: contain;
 }
 .ptr-screen-scroll::-webkit-scrollbar-track {
-  background: rgba(0,0,0,.1);
+	background: rgba(0, 0, 0, 0.1);
 }
 .ptr-screen-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,.15);
+	background: rgba(0, 0, 0, 0.15);
 }
-.ptr-screen-scroll::-webkit-scrollbar-thumb:hover, .ptr-screen-scroll::-webkit-scrollbar-button:hover {
-  background: rgba(60,30,0,.2);
+.ptr-screen-scroll::-webkit-scrollbar-thumb:hover,
+.ptr-screen-scroll::-webkit-scrollbar-button:hover {
+	background: rgba(60, 30, 0, 0.2);
 }
-.ptr-screen-scroll::-webkit-scrollbar-thumb:active, .ptr-screen-scroll::-webkit-scrollbar-button:active {
-  background: rgba(40,35,20,.5);
+.ptr-screen-scroll::-webkit-scrollbar-thumb:active,
+.ptr-screen-scroll::-webkit-scrollbar-button:active {
+	background: rgba(40, 35, 20, 0.5);
 }
 .ptr-screen-scroll::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(0,0,0,.075);
+	background: rgba(0, 0, 0, 0.075);
 }

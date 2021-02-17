@@ -1,24 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import LoginOverlay from "../LoginOverlay";
+import LoginOverlay from '../LoginOverlay';
 
 class AppContainer extends React.PureComponent {
-
 	static propTypes = {
 		activeUser: PropTypes.object,
 		loginRequired: PropTypes.bool,
 		light: PropTypes.bool,
 		dark: PropTypes.bool,
 
-		onLoginOverlayClose: PropTypes.func
+		onLoginOverlayClose: PropTypes.func,
 	};
 
 	render() {
-
 		let classes = classNames(this.props.appKey, {
 			'ptr-light': this.props.light || !this.props.dark,
-			'ptr-dark': this.props.dark
+			'ptr-dark': this.props.dark,
 		});
 
 		return (
@@ -32,25 +30,19 @@ class AppContainer extends React.PureComponent {
 		let loginOverlay = this.renderLoginOverlay();
 
 		if (this.props.loginRequired && !this.props.activeUser) {
-			return (
-				<LoginOverlay
-					open
-					loginRequired
-					onLogin={this.props.onLogIn}
-				/>
-			)
-		}  else {
+			return <LoginOverlay open loginRequired onLogin={this.props.onLogIn} />;
+		} else {
 			return (
 				<>
 					{loginOverlay}
 					{this.props.children}
 				</>
-			)
+			);
 		}
 	}
 
 	renderLoginOverlay() {
-		 if (this.props.loginOverlayOpen) {
+		if (this.props.loginOverlayOpen) {
 			return (
 				<LoginOverlay
 					onLogin={this.props.onLogIn}

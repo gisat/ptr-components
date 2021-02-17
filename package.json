@@ -1,81 +1,81 @@
 {
-  "name": "@gisatcz/ptr-components",
-  "version": "1.2.0",
-  "description": "Panther FE components",
-  "keywords": [
-    "panther",
-    "gisat"
-  ],
-  "homepage": "https://github.com/gisat/ptr-components",
-  "prettier": "@gisatcz/prettier-config",
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "style": "dist/style.css",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "files": [
-    "dist",
-    "lib"
-  ],
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gisat/ptr-components"
-  },
-  "dependencies": {
-    "@gisatcz/ptr-atoms": "^1.3.11",
-    "@gisatcz/ptr-core": "^1.3.10",
-    "@gisatcz/ptr-locales": "^1.2.2",
-    "@gisatcz/ptr-utils": "^1.3.11",
-    "classnames": "2.2.6",
-    "lodash": "^4.17.20",
-    "postcss": "^8.2.6",
-    "prop-types": "15.7.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-rnd": "9.2.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.12.16",
-    "@babel/core": "^7.12.16",
-    "@babel/plugin-proposal-class-properties": "^7.12.13",
-    "@babel/preset-env": "^7.12.16",
-    "@babel/preset-react": "^7.12.13",
-    "@gisatcz/prettier-config": "0.0.3",
-    "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "babel-plugin-lodash": "^3.3.4",
-    "glob": "^7.1.6",
-    "husky": "^5.0.9",
-    "npm-run-all": "^4.1.5",
-    "path": "^0.12.7",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.39.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-filesize": "^9.1.0",
-    "rollup-plugin-node-externals": "^2.2.0",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-sass": "^1.2.2",
-    "svg-inline-loader": "0.8.2"
-  },
-  "scripts": {
-    "clean": "rimraf dist",
-    "start": "run-s clean && run-p start:es start:cjs start:lib:es",
-    "start:lib:es": "cross-env BABEL_ENV=es babel --watch src -d lib --verbose",
-    "start:cjs": "cross-env NODE_ENV=cjs rollup -c -w",
-    "start:es": "cross-env NODE_ENV=es rollup -c -w",
-    "build": "run-s clean && run-p build:es build:cjs build:lib:es",
-    "build:es": "cross-env NODE_ENV=es rollup -c",
-    "build:cjs": "cross-env NODE_ENV=cjs rollup -c",
-    "build:lib:es": "npm-run-all build:babel:lib:es copy:stylesheets copy:assets",
-    "build:babel:lib:es": "cross-env BABEL_ENV=es babel src -d lib",
-    "copy:stylesheets": "node ./build/copy-stylesheets.js",
-    "copy:assets": "node ./build/copy-assets.js",
-    "format": "prettier --write ."
-  }
+	"name": "@gisatcz/ptr-components",
+	"version": "1.2.0",
+	"description": "Panther FE components",
+	"keywords": [
+		"panther",
+		"gisat"
+	],
+	"homepage": "https://github.com/gisat/ptr-components",
+	"prettier": "@gisatcz/prettier-config",
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
+	"style": "dist/style.css",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"files": [
+		"dist",
+		"lib"
+	],
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gisat/ptr-components"
+	},
+	"dependencies": {
+		"@gisatcz/ptr-atoms": "^1.3.11",
+		"@gisatcz/ptr-core": "^1.3.10",
+		"@gisatcz/ptr-locales": "^1.2.2",
+		"@gisatcz/ptr-utils": "^1.3.11",
+		"classnames": "2.2.6",
+		"lodash": "^4.17.20",
+		"postcss": "^8.2.6",
+		"prop-types": "15.7.2",
+		"react": "16.13.1",
+		"react-dom": "16.13.1",
+		"react-rnd": "9.2.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.12.16",
+		"@babel/core": "^7.12.16",
+		"@babel/plugin-proposal-class-properties": "^7.12.13",
+		"@babel/preset-env": "^7.12.16",
+		"@babel/preset-react": "^7.12.13",
+		"@gisatcz/prettier-config": "0.0.3",
+		"@rollup/plugin-commonjs": "^17.1.0",
+		"@rollup/plugin-node-resolve": "^11.2.0",
+		"babel-plugin-lodash": "^3.3.4",
+		"glob": "^7.1.6",
+		"husky": "^5.0.9",
+		"npm-run-all": "^4.1.5",
+		"path": "^0.12.7",
+		"prettier": "^2.2.1",
+		"pretty-quick": "^3.1.0",
+		"rimraf": "^3.0.2",
+		"rollup": "^2.39.0",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-filesize": "^9.1.0",
+		"rollup-plugin-node-externals": "^2.2.0",
+		"rollup-plugin-postcss": "^4.0.0",
+		"rollup-plugin-sass": "^1.2.2",
+		"svg-inline-loader": "0.8.2"
+	},
+	"scripts": {
+		"clean": "rimraf dist",
+		"start": "run-s clean && run-p start:es start:cjs start:lib:es",
+		"start:lib:es": "cross-env BABEL_ENV=es babel --watch src -d lib --verbose",
+		"start:cjs": "cross-env NODE_ENV=cjs rollup -c -w",
+		"start:es": "cross-env NODE_ENV=es rollup -c -w",
+		"build": "run-s clean && run-p build:es build:cjs build:lib:es",
+		"build:es": "cross-env NODE_ENV=es rollup -c",
+		"build:cjs": "cross-env NODE_ENV=cjs rollup -c",
+		"build:lib:es": "npm-run-all build:babel:lib:es copy:stylesheets copy:assets",
+		"build:babel:lib:es": "cross-env BABEL_ENV=es babel src -d lib",
+		"copy:stylesheets": "node ./build/copy-stylesheets.js",
+		"copy:assets": "node ./build/copy-assets.js",
+		"format": "prettier --write ."
+	}
 }
