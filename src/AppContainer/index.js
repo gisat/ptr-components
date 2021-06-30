@@ -37,7 +37,7 @@ class AppContainer extends React.PureComponent {
 		let loginOverlay = this.renderLoginOverlay();
 
 		if (this.props.loginRequired && !this.props.activeUser) {
-			return <LoginOverlay open loginRequired onLogin={this.props.onLogIn}/>;
+			return <LoginOverlay open loginRequired onLogin={this.props.onLogIn} />;
 		} else {
 			return (
 				<>
