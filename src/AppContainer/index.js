@@ -11,7 +11,14 @@ class AppContainer extends React.PureComponent {
 		dark: PropTypes.bool,
 
 		onLoginOverlayClose: PropTypes.func,
+		onMount: PropTypes.func,
 	};
+
+	componentDidMount() {
+		if (typeof this.props.onMount === 'function') {
+			this.props.onMount();
+		}
+	}
 
 	render() {
 		let classes = classNames(this.props.appKey, {
@@ -30,7 +37,7 @@ class AppContainer extends React.PureComponent {
 		let loginOverlay = this.renderLoginOverlay();
 
 		if (this.props.loginRequired && !this.props.activeUser) {
-			return <LoginOverlay open loginRequired onLogin={this.props.onLogIn} />;
+			return <LoginOverlay open loginRequired onLogin={this.props.onLogIn}/>;
 		} else {
 			return (
 				<>
