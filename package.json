@@ -26,16 +26,16 @@
 		"url": "https://github.com/gisat/ptr-components"
 	},
 	"dependencies": {
-		"@gisatcz/ptr-atoms": "^1.3.11",
-		"@gisatcz/ptr-core": "^1.3.10",
-		"@gisatcz/ptr-locales": "^1.2.2",
-		"@gisatcz/ptr-utils": "^1.3.11",
+		"@gisatcz/ptr-atoms": "^1.3.13",
+		"@gisatcz/ptr-core": "^1.4.0",
+		"@gisatcz/ptr-locales": "^1.3.0",
+		"@gisatcz/ptr-utils": "^1.3.14",
 		"classnames": "2.2.6",
-		"lodash": "^4.17.20",
-		"postcss": "^8.2.6",
+		"lodash": "^4.17.21",
+		"postcss": "^8.3.5",
 		"prop-types": "15.7.2",
-		"react": "16.13.1",
-		"react-dom": "16.13.1",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
 		"react-rnd": "9.2.0"
 	},
 	"devDependencies": {
