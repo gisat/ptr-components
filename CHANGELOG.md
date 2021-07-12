@@ -1,3 +1,15 @@
+# v1.2.4 (Mon Jul 12 2021)
+
+#### 🐾 Patch
+
+- Add callback onMount to the User and AppContainer [#11](https://github.com/gisat-panther/ptr-components/pull/11) ([@vdubr](https://github.com/vdubr))
+
+#### Authors: 1
+
+- Vojtěch Dubrovský ([@vdubr](https://github.com/vdubr))
+
+---
+
 # v1.2.3 (Mon Jul 12 2021)
 
 #### 🐾 Patch
