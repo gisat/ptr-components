@@ -11,7 +11,14 @@ class AppContainer extends React.PureComponent {
 		dark: PropTypes.bool,
 
 		onLoginOverlayClose: PropTypes.func,
+		onMount: PropTypes.func,
 	};
+
+	componentDidMount() {
+		if (typeof this.props.onMount === 'function') {
+			this.props.onMount();
+		}
+	}
 
 	render() {
 		let classes = classNames(this.props.appKey, {

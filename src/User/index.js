@@ -11,7 +11,14 @@ class User extends React.PureComponent {
 	static propTypes = {
 		user: PropTypes.object,
 		inverted: PropTypes.bool,
+		onMount: PropTypes.func,
 	};
+
+	componentDidMount() {
+		if (typeof this.props.onMount === 'function') {
+			this.props.onMount();
+		}
+	}
 
 	render() {
 		let t = this.props.t;
