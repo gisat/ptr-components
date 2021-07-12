@@ -1,3 +1,15 @@
+# v1.2.3 (Mon Jul 12 2021)
+
+#### 🐾 Patch
+
+- Update dependencies [#12](https://github.com/gisat-panther/ptr-components/pull/12) ([@vdubr](https://github.com/vdubr))
+
+#### Authors: 1
+
+- Vojtěch Dubrovský ([@vdubr](https://github.com/vdubr))
+
+---
+
 # v1.2.2 (Wed Feb 17 2021)
 
 #### 🐾 Patch
